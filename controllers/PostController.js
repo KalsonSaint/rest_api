@@ -68,8 +68,10 @@ exports.updatePost = async (req, res) => {
 exports.deletePost = async (req, res) => {
   try {
     const deletedPost = await Post.remove({ _id: req.params.postId });
-    res.json({ deletePost, message: "Post deleted successfully" });
+    res.json({ deletedPost, message: "Post deleted successfully" });
   } catch (err) {
-    res.json({ message: err.message });
+    res.status(500).json({
+      message: err.toString(),
+    });
   }
 };
