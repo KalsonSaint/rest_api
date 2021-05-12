@@ -1,31 +1,42 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
 require("dotenv/config");
 
-// Import Routes
-const postRoute = require("./routes/posts");
+// enironment variables
+const { PORT, DB_CONNECTION } = process.env;
 
-// Middleware
-app.use(bodyParser.json());
-app.use("/posts", postRoute);
+// consants
+const db = DB_CONNECTION;
+const port = PORT || 4000;
+
+// Import Routes
+const postRoutes = require("./routes/posts");
+const userRoutes = require("./routes/users");
+
+// Middlewares
+app.use(express.json());
+app.use("/posts", postRoutes);
+app.use("/users", userRoutes);
 
 // Routes
-app.get("/", (req, res) => {
+app.get("/", (_req, res) => {
   res.send("Welcome Home!!!");
 });
 
 // Connect to DB
-mongoose.connect(
-  process.env.DB_CONNECTION,
-  { useNewUrlParser: true, useUnifiedTopology: true },
-  () => {
-    console.log("Connected to DB!");
-  }
-);
+mongoose
+  .connect(db, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
+  })
+  .then(() => console.log("DB Connection successful"))
+  .catch(() => console.log("DB Connection error!!!"));
 
 // Listen to server
-app.listen(4000, () => {
+app.listen(port, (err) => {
+  if (err) console.error(err);
   console.log("App lsitening to port 4000");
 });
