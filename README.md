@@ -1,4 +1,6 @@
-# REST API built with Node, Express, MongoDB
+# CRUD APP WITH DATABASE
+
+CRUD REST API built with Node, Express, and MongoDB
 
 ## Routes
 Base URL - [REST_API](https://restcrudapi.herokuapp.com)
