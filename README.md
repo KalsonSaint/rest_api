@@ -12,4 +12,5 @@ This API consists of five(5) routes namely:
 * **/deleteUser** - This deletes a specific User by passing the userId
 
 Github Link - [CRUD REST_API](https://github.com/KalsonSaint/rest_api)
+
 Heroku Link - [CRUD REST_API](https://restcrudapi.herokuapp.com)
