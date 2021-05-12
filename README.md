@@ -13,7 +13,7 @@ This API consists of five(5) routes namely:
 
 ## Sample Result for each route
 
-* **/getUsers** - ``{
+* **/getUsers** - `` {
   "users": [
     {
       "_id": "609bba8ad373911ba876d66a",
@@ -38,4 +38,4 @@ This API consists of five(5) routes namely:
     }
   ],
   "message": "users fetched successfully"
-}``
+} ``
